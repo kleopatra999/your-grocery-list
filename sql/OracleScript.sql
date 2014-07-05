@@ -65,6 +65,7 @@ CREATE TABLE ITEMS
 ( 
 	itemId 			NUMBER(18) NOT NULL,
 	categoryId		NUMBER(18) NOT NULL,
+	inventoryId 	NUMBER(18) NOT NULL,
 	itemName		VARCHAR2(255 CHAR),
 	brandName		VARCHAR2(255 CHAR),
 	description		VARCHAR2(255 CHAR),
