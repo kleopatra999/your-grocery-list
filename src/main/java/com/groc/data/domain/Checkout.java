@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,9 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
+@Table(name = "CHECKOUT")
+@SequenceGenerator(name = "groc_id_seq", sequenceName = "GROC_ID_SEQ")
 public class Checkout implements Serializable {
 	public static final long serialVersionUID = 862342093742L;
 	private Long id;
@@ -28,7 +34,7 @@ public class Checkout implements Serializable {
 
 	@Id
 	@Column(name = "checkoutId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groc_id_seq")
 	public Long getId() {
 		return id;
 	}

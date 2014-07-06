@@ -8,10 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_GROUPS")
+@SequenceGenerator(name = "groc_id_seq", sequenceName = "GROC_ID_SEQ")
 public class UserGroups implements Serializable {
 	private static final long serialVersionUID = -12981029810283L;
 	private Long id;
@@ -20,7 +22,7 @@ public class UserGroups implements Serializable {
 
 	@Id
 	@Column(name = "userGroupId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groc_id_seq")
 	public Long getId() {
 		return id;
 	}

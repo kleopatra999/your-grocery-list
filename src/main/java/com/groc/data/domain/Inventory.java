@@ -6,11 +6,17 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "INVENTORY")
+@SequenceGenerator(name = "groc_id_seq", sequenceName = "GROC_ID_SEQ")
 public class Inventory implements Serializable {
 	private static final long serialVersionUID = 2049898903740L;
 
@@ -20,7 +26,7 @@ public class Inventory implements Serializable {
 
 	@Id
 	@Column(name = "itemName")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groc_id_seq")
 	public Long getId() {
 		return id;
 	}

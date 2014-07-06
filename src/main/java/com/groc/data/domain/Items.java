@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "ITEMS")
+@SequenceGenerator(name = "groc_id_seq", sequenceName = "GROC_ID_SEQ")
 public class Items implements Serializable {
 	private static final long serialVersionUID = 110342454587829L;
 
@@ -30,7 +36,7 @@ public class Items implements Serializable {
 
 	@Id
 	@Column(name = "itemId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groc_id_seq")
 	public Long getId() {
 		return id;
 	}

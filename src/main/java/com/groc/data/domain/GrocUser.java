@@ -12,10 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "GROC_USER")
+@SequenceGenerator(name = "groc_id_seq", sequenceName = "GROC_ID_SEQ")
 public class GrocUser implements Serializable {
 	private static final long serialVersionUID = 123770912039123L;
 	private Long id;
@@ -29,8 +31,8 @@ public class GrocUser implements Serializable {
 	private Set<Checkout> checkout = new HashSet<Checkout>();
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groc_id_seq")
 	@Column(name = "userId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
